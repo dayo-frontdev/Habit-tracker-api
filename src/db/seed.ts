@@ -1,7 +1,6 @@
 import {db} from "./connection.ts";
-import env, { isDev, isProd } from "../../env.ts";
+import  { isProd } from "../../env.ts";
 import { users, habits, tags, entries, habitTags } from "./schema.ts";
-import e from "express";
 
 const seed = async () =>{
     console.log("🌱Starting database seed.....");
@@ -75,8 +74,6 @@ const seed = async () =>{
     }
 }
 
-console.log(env)
-console.log(isDev())
 if( import.meta.url === `file://${process.argv[1]}` && !isProd() ){
     seed()
     .then(()=>process.exit(0))
